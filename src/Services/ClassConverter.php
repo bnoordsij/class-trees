@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace Bnoordsij\ClassTrees\Services;
 
-use App\Factory\ClassFactory;
-use App\Models\Classe;
-use App\Models\QueuedClass;
+use Bnoordsij\ClassTrees\Factory\ClassFactory;
+use Bnoordsij\ClassTrees\Models\Classe;
+use Bnoordsij\ClassTrees\Models\QueuedClass;
 
 class ClassConverter
 {

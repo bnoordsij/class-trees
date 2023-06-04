@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace Bnoordsij\ClassTrees\Services;
 
-use App\Models\Classe;
-use App\Models\Project;
+use Bnoordsij\ClassTrees\Models\Classe;
+use Bnoordsij\ClassTrees\Models\Project;
 use Illuminate\Support\Collection;
 
 class ClassTreeBuilder

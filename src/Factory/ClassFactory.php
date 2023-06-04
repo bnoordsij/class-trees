@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Factory;
+namespace Bnoordsij\ClassTrees\Factory;
 
-use App\Models\Classe;
-use App\Models\NamespaceRule;
-use App\Models\QueuedClass;
-use App\Services\FqnToFile;
+use Bnoordsij\ClassTrees\Models\Classe;
+use Bnoordsij\ClassTrees\Models\NamespaceRule;
+use Bnoordsij\ClassTrees\Models\QueuedClass;
+use Bnoordsij\ClassTrees\Services\FqnToFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;

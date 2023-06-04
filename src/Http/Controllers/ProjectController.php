@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Bnoordsij\ClassTrees\Http\Controllers;
 
-use App\Models\Project;
-use App\Services\ClassTreeBuilder;
+use Bnoordsij\ClassTrees\Models\Project;
+use Bnoordsij\ClassTrees\Services\ClassTreeBuilder;
 
 class ProjectController extends Controller
 {

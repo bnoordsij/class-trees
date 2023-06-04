@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Providers;
+namespace Bnoordsij\ClassTrees\Providers;
 
-use App\Models\Classe;
-use App\Observers\ClassObserver;
+use Bnoordsij\ClassTrees\Models\Classe;
+use Bnoordsij\ClassTrees\Observers\ClassObserver;
 use Illuminate\Support\ServiceProvider;
 
 class ClassTreesServiceProvider extends ServiceProvider

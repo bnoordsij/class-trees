@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Bnoordsij\ClassTrees\Http\Requests;
 
 class ProjectCreateRequest extends BaseRequest
 {

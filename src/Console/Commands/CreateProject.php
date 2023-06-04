@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Bnoordsij\ClassTrees\Console\Commands;
 
-use App\Models\Project;
+use Bnoordsij\ClassTrees\Models\Project;
 use Illuminate\Console\Command;
 
 class CreateProject extends Command

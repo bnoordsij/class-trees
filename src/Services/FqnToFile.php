@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace Bnoordsij\ClassTrees\Services;
 
 use Illuminate\Support\Str;
 

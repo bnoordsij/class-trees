@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enum;
+namespace Bnoordsij\ClassTrees\Enum;
 
 class ClassRelation
 {

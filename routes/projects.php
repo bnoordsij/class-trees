@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProjectController;
+use Bnoordsij\ClassTrees\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('projects/{project}/tree', [ProjectController::class, 'tree'])->name('projects.tree');

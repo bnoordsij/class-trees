@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Observers;
+namespace Bnoordsij\ClassTrees\Observers;
 
-use App\Models\Classe;
-use App\Models\QueuedClass;
+use Bnoordsij\ClassTrees\Models\Classe;
+use Bnoordsij\ClassTrees\Models\QueuedClass;
 
 class ClassObserver
 {

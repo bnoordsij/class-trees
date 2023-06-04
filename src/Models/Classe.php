@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace Bnoordsij\ClassTrees\Models;
 
-use App\Enum\ClassRelation;
+use Bnoordsij\ClassTrees\Enum\ClassRelation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
