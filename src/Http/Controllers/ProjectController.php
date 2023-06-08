@@ -16,14 +16,8 @@ class ProjectController extends Controller
             ->withCount('queuedClasses')
             ->withCount('classes')
             ->get();
-        dump('$projects', $projects);
-
-        dump(['$project', $project,
-            $project->classes()->count(),
-        ]);
 
         $tree = ClassTreeBuilder::fromProject($project);
-        dd('$tree', $tree);
 
         return view('projects.tree', compact('project', 'tree'));
     }
