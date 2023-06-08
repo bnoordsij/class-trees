@@ -3,11 +3,13 @@
 namespace Bnoordsij\ClassTrees\Console\Commands;
 
 use Bnoordsij\ClassTrees\Models\Project;
+use Bnoordsij\ClassTrees\Services\ClassConverter;
+use Bnoordsij\ClassTrees\Services\FqnToFile;
 use Illuminate\Console\Command;
 
 class CreateProject extends Command
 {
-    protected $signature = 'app:create-project
+    protected $signature = 'class-trees:create-project
                             {--name= : Provide a name}
                             {--dir= : Provide a folder [default: pwd]}
                             {--class= : Provide the first class}';
@@ -19,7 +21,7 @@ class CreateProject extends Command
         $name = $this->option('name');
         $path = $this->option('dir') ?: getcwd();
         $entryClass = $this->option('class');
-        $error = $this->validate($name, $entryClass);
+        $error = $this->validate($name, $path, $entryClass);
         if ($error !== null) {
             return $error;
         }
@@ -29,16 +31,17 @@ class CreateProject extends Command
             'path' => $path,
         ]);
 
-        $project->queuedClasses()->create([
+        $queuedClass = $project->queuedClasses()->create([
             'fqn' => $entryClass,
         ]);
+        ClassConverter::fromQueuedClass($queuedClass);
 
         $this->info('Project created');
 
         return self::SUCCESS;
     }
 
-    private function validate(?string $name, ?string $entryClass): ?int
+    private function validate(?string $name, string $path, ?string $entryClass): ?int
     {
         if (! $name) {
             $this->warn("Please provide a name");
@@ -46,7 +49,9 @@ class CreateProject extends Command
             return self::FAILURE;
         }
 
-        $existingProject = Project::query()->where('name', $name)->exists();
+        $existingProject = Project::query()
+            ->whereHas('classes')
+            ->where('name', $name)->exists();
         if ($existingProject) {
             $this->warn("A project with this name already exists");
 
@@ -60,7 +65,8 @@ class CreateProject extends Command
         }
 
         // check if class exists based on path
-        if (0) {
+        $file = FqnToFile::convert($path, $entryClass);
+        if (!file_exists($file)) {
             $this->warn("Please provide an existing class");
 
             return self::FAILURE;

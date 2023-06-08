@@ -18,6 +18,7 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $table = 'class_projects';
     protected $guarded = [];
 
     public function classes(): HasMany

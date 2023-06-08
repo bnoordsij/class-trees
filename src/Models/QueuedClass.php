@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
  */
 class QueuedClass extends Model
 {
+    protected $table = 'class_queued_classes';
     protected $guarded = [];
 
     protected $casts = [

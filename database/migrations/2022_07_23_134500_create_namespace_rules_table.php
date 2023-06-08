@@ -10,7 +10,7 @@ class CreateNamespaceRulesTable extends Migration
     {
         Schema::create('class_namespace_rules', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('project_id')->nullable()->constrained('projects')->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('project_id')->nullable()->constrained('class_projects')->cascadeOnUpdate()->nullOnDelete();
 
             $table->string('namespace', 100); // App, \Maximum\*, \Modules\*
             $table->timestamps();

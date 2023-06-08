@@ -10,7 +10,7 @@ class CreateClassesTable extends Migration
     {
         Schema::create('class_classes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('project_id')->nullable()->constrained('projects')->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('project_id')->nullable()->constrained('class_projects')->cascadeOnUpdate()->nullOnDelete();
             $table->string('name', 100)->index(); // UserController
             $table->string('package', 100)->index(); // App or Spatie\Media
             $table->string('fqn', 250); // App\Http\Controllers\UserController
