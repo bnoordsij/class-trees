@@ -29,6 +29,7 @@ class Classe extends Model
 {
     use HasFactory;
 
+    protected $table = 'class_classes';
     protected $guarded = [];
 
     public function project(): BelongsTo

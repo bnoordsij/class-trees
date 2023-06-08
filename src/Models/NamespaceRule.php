@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class NamespaceRule extends Model
 {
+    protected $table = 'class_namespace_rules';
     protected $guarded = [];
 
     public function project(): BelongsTo

@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 
 class ConvertQueuedClasses extends Command
 {
-    protected $signature = 'app:convert-queued-classes
+    protected $signature = 'class-trees:convert-queued-classes
                             {--p|project-id= : Provide a project ID (if no ID is provided we\'ll return a list of projects)}
                             {--class-distance= :
                             {--repeat=1 : Number of times you want to run this command sequentially}';
