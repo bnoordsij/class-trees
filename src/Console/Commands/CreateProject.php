@@ -58,6 +58,18 @@ class CreateProject extends Command
             return self::FAILURE;
         }
 
+        if (!file_exists($path) || !is_dir($path)) {
+            $this->warn("Please provide an existing dir");
+
+            return self::FAILURE;
+        }
+
+        if (!is_readable($path) || !is_executable($path)) {
+            $this->warn("Please provide a directory with read and execute permissions");
+
+            return self::FAILURE;
+        }
+
         if (! $entryClass) {
             $this->warn("Please provide a starting class");
 
@@ -68,6 +80,13 @@ class CreateProject extends Command
         $file = FqnToFile::convert($path, $entryClass);
         if (!file_exists($file)) {
             $this->warn("Please provide an existing class");
+
+            return self::FAILURE;
+        }
+
+        // check if we have read access
+        if (!is_readable($file)) {
+            $this->warn("Please provide a class with read permissions");
 
             return self::FAILURE;
         }
