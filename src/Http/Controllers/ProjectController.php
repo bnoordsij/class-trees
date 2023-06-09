@@ -3,19 +3,17 @@
 namespace Bnoordsij\ClassTrees\Http\Controllers;
 
 use Bnoordsij\ClassTrees\Models\Project;
+use Bnoordsij\ClassTrees\Models\QueuedClass;
 use Bnoordsij\ClassTrees\Services\ClassTreeBuilder;
 
 class ProjectController extends Controller
 {
-    public function tree(Project $project)
+    public function tree($project)
     {
+        $project = Project::query()->findOrFail($project);
+
         $project->classesCount = $project->classes->count();
         $project->queuedClassesCount = $project->queuedClasses->count();
-
-        $projects = Project::query()
-            ->withCount('queuedClasses')
-            ->withCount('classes')
-            ->get();
 
         $tree = ClassTreeBuilder::fromProject($project);
 
