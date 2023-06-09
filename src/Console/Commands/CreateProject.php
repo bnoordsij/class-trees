@@ -7,7 +7,7 @@ use Bnoordsij\ClassTrees\Services\ClassConverter;
 use Bnoordsij\ClassTrees\Services\FqnToFile;
 use Illuminate\Console\Command;
 
-class CreateProject extends Command
+final class CreateProject extends Command
 {
     protected $signature = 'class-trees:create-project
                             {--name= : Provide a name}
@@ -23,7 +23,9 @@ class CreateProject extends Command
         $entryClass = $this->option('class');
         $error = $this->validate($name, $path, $entryClass);
         if ($error !== null) {
-            return $error;
+            $this->error($error);
+
+            return self::FAILURE;
         }
 
         $project = Project::create([
@@ -41,52 +43,38 @@ class CreateProject extends Command
         return self::SUCCESS;
     }
 
-    private function validate(?string $name, string $path, ?string $entryClass): ?int
+    private function validate(?string $name, string $path, ?string $entryClass): ?string
     {
         if (! $name) {
-            $this->warn("Please provide a name");
-
-            return self::FAILURE;
+            return "Please provide a name";
         }
 
         $existingProject = Project::query()
             ->whereHas('classes')
             ->where('name', $name)->exists();
         if ($existingProject) {
-            $this->warn("A project with this name already exists");
-
-            return self::FAILURE;
+            return "A project with this name already exists";
         }
 
         if (!file_exists($path) || !is_dir($path)) {
-            $this->warn("Please provide an existing dir");
-
-            return self::FAILURE;
+            return "Please provide an existing dir";
         }
 
         if (!is_readable($path) || !is_executable($path)) {
-            $this->warn("Please provide a directory with read and execute permissions");
-
-            return self::FAILURE;
+            return "Please provide a directory with read and execute permissions";
         }
 
         if (! $entryClass) {
-            $this->warn("Please provide a starting class");
-
-            return self::FAILURE;
+            return "Please provide a starting class";
         }
 
         $file = FqnToFile::convert($path, $entryClass);
         if (!file_exists($file)) {
-            $this->warn("Please provide an existing class");
-
-            return self::FAILURE;
+            return "Please provide an existing class";
         }
 
         if (!is_readable($file)) {
-            $this->warn("Please provide a class with read permissions");
-
-            return self::FAILURE;
+            return "Please provide a class with read permissions";
         }
 
         return null;
