@@ -76,7 +76,6 @@ class CreateProject extends Command
             return self::FAILURE;
         }
 
-        // check if class exists based on path
         $file = FqnToFile::convert($path, $entryClass);
         if (!file_exists($file)) {
             $this->warn("Please provide an existing class");
@@ -84,7 +83,6 @@ class CreateProject extends Command
             return self::FAILURE;
         }
 
-        // check if we have read access
         if (!is_readable($file)) {
             $this->warn("Please provide a class with read permissions");
 
