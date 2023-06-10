@@ -24,7 +24,8 @@ class CreateQueuedClassesTable extends Migration
             }
             $table->timestamps();
 
-            $table->unique(['project_id', 'fqn']);
+            // better would be to make imports a separate relation and keep unique on project_id+fqn
+            $table->unique(['project_id', 'fqn', 'imported_by']);
         });
     }
 }

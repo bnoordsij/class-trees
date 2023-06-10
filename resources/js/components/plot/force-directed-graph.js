@@ -18,8 +18,8 @@ function forceGraph({
         linkTarget = ({target}) => target, // given d in links, returns a node identifier string
         linkStroke = "#999", // link stroke color
         colors = d3.schemeTableau10, // an array of color strings, for the node groups
-        width = 640, // outer width, in pixels
-        height = 400, // outer height, in pixels
+        width = 1280, // outer width, in pixels
+        height = 800, // outer height, in pixels
         invalidation // when this promise resolves, stop the simulation
     } = {}) {
     // Compute values.

@@ -28,7 +28,13 @@ class ClassTreesServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
 
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'class-trees');
+
         $this->commands($this->commands);
+
+        $this->publishes([
+            __DIR__.'/../../resources/js' => resource_path('js/vendor/class-trees'),
+        ], 'public');
 
         Classe::observe(ClassObserver::class);
     }

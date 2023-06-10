@@ -1,4 +1,4 @@
-@extends('base')
+@extends('class-trees::base')
 
 @section('body')
     <div class="js-draw-tree">

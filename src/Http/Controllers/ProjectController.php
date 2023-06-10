@@ -17,6 +17,6 @@ class ProjectController extends Controller
 
         $tree = ClassTreeBuilder::fromProject($project);
 
-        return view('projects.tree', compact('project', 'tree'));
+        return view('class-trees::projects.tree', compact('project', 'tree'));
     }
 }
